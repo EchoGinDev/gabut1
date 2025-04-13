@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Python Slot Machine</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .slot {
+            font-size: 2rem;
+            margin: 10px;
+        }
+        .row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎰 Python Slot Machine 🎰</h1>
+    <p>Symbols: {{ symbols|join(", ") }}</p>
+    <form method="POST">
+        <label for="bet">Enter your bet:</label>
+        <input type="number" name="bet" min="1" required>
+        <button type="submit">Spin</button>
+    </form>
+
+    {% if result %}
+        <div class="row">
+            {% for symbol in result %}
+                <div class="slot">{{ symbol }}</div>
+            {% endfor %}
+        </div>
+        <p>{{ message }}</p>
+    {% endif %}
+
+    <p>Balance: ${{ balance }}</p>
+</body>
+</html>
